@@ -16,7 +16,7 @@ router.get('/usuario/:id', async (req,res)=>{
 router.get('/usuarios',very.admin,async (req,res)=>{
     res.send(await service.getAll())
 })
-router.post('/usuario', async(req,res)=>{
+router.post('/usuario',very.admin, async(req,res)=>{
     let user = req.body
     await service.newUser(user).then((result)=>res.status(201).send(result)).catch((err)=>res.status(401).send(err))
     
